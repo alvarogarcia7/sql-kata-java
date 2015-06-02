@@ -1,5 +1,6 @@
 package com.example.kata.sql;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -7,7 +8,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class SQLGeneratorShould {
 
-	private SQLGenerator sqlGenerator = new SQLGenerator();
+	private SQLGenerator sqlGenerator;
+
+	@Before
+	public void setUp () {
+		sqlGenerator = new SQLGenerator();
+	}
 
 	@Test
 	public void generate_sql_for_two_columns () {
