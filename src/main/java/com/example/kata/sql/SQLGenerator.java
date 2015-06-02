@@ -5,6 +5,7 @@ import com.sun.deploy.util.StringUtils;
 import java.util.Arrays;
 
 public class SQLGenerator {
+	public static final String ALL_COLUMNS = "*";
 	private final String SELECT = "select ";
 	private final String FROM_CLAUSE = " from ";
 
@@ -17,6 +18,6 @@ public class SQLGenerator {
 	}
 
 	public String selectAll (final String table) {
-		return SELECT+"*"+FROM_CLAUSE + table;
+		return SELECT+ ALL_COLUMNS +FROM_CLAUSE + table;
 	}
 }
