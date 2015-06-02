@@ -16,10 +16,10 @@ public class WhereBuilder {
 	}
 
 	public String build () {
-		return "where "+singleQuoute(constant)+ WHITESPACE +operation+ WHITESPACE + otherClause.smallBuild();
+		return "where "+singleQuoute(constant)+ WHITESPACE +operation+ WHITESPACE + otherClause.buildSubqueryOnly();
 	}
 
-	private String smallBuild () {
+	private String buildSubqueryOnly () {
 		return singleQuoute(constant);
 	}
 
