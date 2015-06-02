@@ -9,6 +9,14 @@ public class SQLGenerator {
 	private static final String COLUMN_SEPARATOR = ", ";
 	private static final String SELECT = "select ";
 	private static final String FROM = " from ";
+	private final Where where;
+
+	public SQLGenerator (final Where where) {
+		this.where = where;
+	}
+	public SQLGenerator(){
+		this.where = new Where();
+	}
 
 	public String select (final String[] columns, final String table) {
 		return SELECT + getColumns(columns) + FROM + table;
@@ -20,5 +28,9 @@ public class SQLGenerator {
 
 	public String selectAll (final String table) {
 		return SELECT+ ALL_COLUMNS + FROM + table;
+	}
+
+	public String selectAll (final String table, final String where) {
+		return null;
 	}
 }

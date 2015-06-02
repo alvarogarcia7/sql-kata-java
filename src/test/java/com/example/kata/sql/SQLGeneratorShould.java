@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class SQLGeneratorShould {
 
@@ -23,6 +25,22 @@ public class SQLGeneratorShould {
 	@Test
 	public void select_all_the_columns () {
 		assertThat(sqlGenerator.selectAll(from("a")), is("select * from a"));
+	}
+
+	@Test
+	public void ask_the_where_collaborator_for_its_subquery () {
+		final Where where = mock(Where.class);
+		sqlGenerator = new SQLGenerator(where);
+		sqlGenerator.selectAll("table", where("a", equal("11")));
+		verify(where).generateQuery(where("a", equal("11")));
+	}
+
+	private String where (final String column, final String clause) {
+		return null;
+	}
+
+	private String equal (final String value) {
+		return null;
 	}
 
 	private String[] columns (String... columns) {
