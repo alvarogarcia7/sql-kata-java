@@ -15,7 +15,11 @@ public class WhereBuilder {
 	}
 
 	public String build () {
-		return "where "+"'"+constant+"' "+operation+" 'a'";
+		return "where "+"'"+constant+"' "+operation+" " + otherClause.smallBuild();
+	}
+
+	private String smallBuild () {
+		return "'" + constant + "'";
 	}
 
 	public WhereBuilder equalTo (final WhereBuilder where) {
