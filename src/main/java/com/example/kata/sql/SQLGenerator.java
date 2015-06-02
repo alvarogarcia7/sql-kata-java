@@ -31,6 +31,7 @@ public class SQLGenerator {
 	}
 
 	public String selectAll (final String table, final String where) {
+		this.where.generateQuery(where);
 		return null;
 	}
 }
