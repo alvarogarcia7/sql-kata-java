@@ -9,10 +9,7 @@ public class SQLGenerator {
 	private final String FROM_CLAUSE = " from ";
 
 	public String select (final String[] columns, final String table) {
-		if(columns.length == 2) {
-			return SELECT + getColumns(columns) + FROM_CLAUSE + table;
-		}
-		return SELECT +getColumns(columns)+ FROM_CLAUSE + table;
+		return SELECT + getColumns(columns) + FROM_CLAUSE + table;
 	}
 
 	private String getColumns (final String[] columns) {
