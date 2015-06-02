@@ -1,10 +1,10 @@
 package com.example.kata.sql;
 
 public class WhereBuilder {
-	public static final String WHITESPACE = " ";
-	public static final String WHERE = "where ";
-	public static final String SINGLE_QUOUTE = "'";
-	public static final String EQUALS = "=";
+	private static final String WHITESPACE = " ";
+	private static final String WHERE = "where ";
+	private static final String SINGLE_QUOUTE = "'";
+	private static final String EQUALS = "=";
 	private String constant;
 	private String operation;
 	private WhereBuilder otherClause;
