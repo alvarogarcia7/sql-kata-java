@@ -68,4 +68,8 @@ public class WhereBuilder {
 		this.constantInteger = Optional.of(value);
 		return this;
 	}
+
+	public WhereBuilder constant (final boolean value) {
+		return this;
+	}
 }

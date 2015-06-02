@@ -29,6 +29,17 @@ public class WhereShould {
 				" = 1"));
 	}
 
+	@Test
+	public void column_compared_to_boolean() {
+
+		assertThat(column("column").equalTo(constant(true)).build(), is("where column" +
+				" is true"));
+	}
+
+	private WhereBuilder constant (final boolean value) {
+		return aNew().constant(value);
+	}
+
 	private WhereBuilder constant (final long value) {
 		return aNew().constant(value);
 	}
