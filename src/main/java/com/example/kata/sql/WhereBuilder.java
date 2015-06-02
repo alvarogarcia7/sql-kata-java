@@ -3,6 +3,7 @@ package com.example.kata.sql;
 public class WhereBuilder {
 	public static final String WHITESPACE = " ";
 	public static final String WHERE = "where ";
+	public static final String SINGLE_QUOUTE = "'";
 	private String constant;
 	private String operation;
 	private WhereBuilder otherClause;
@@ -25,7 +26,7 @@ public class WhereBuilder {
 	}
 
 	private String singleQuoute (final String constant1) {
-		return "'" + constant1 + "'";
+		return SINGLE_QUOUTE + constant1 + SINGLE_QUOUTE;
 	}
 
 	public WhereBuilder equalTo (final WhereBuilder where) {
