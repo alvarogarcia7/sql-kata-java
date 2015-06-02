@@ -49,4 +49,8 @@ public class WhereBuilder {
 		this.column = Optional.of(column);
 		return this;
 	}
+
+	public WhereBuilder constant (final long value) {
+		return this;
+	}
 }

@@ -22,6 +22,18 @@ public class WhereShould {
 				" = 'value'"));
 	}
 
+	@Test
+	public void column_greater_than_an_integer() {
+
+		assertThat(column("column").equalTo(constant(1L)).build(), is("where column" +
+				" = 1"));
+	}
+
+	private WhereBuilder constant (final long value) {
+		return aNew().constant(value);
+	}
+
+
 	private WhereBuilder column (final String column) {
 		return aNew().column(column);
 	}
