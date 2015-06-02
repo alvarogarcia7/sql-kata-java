@@ -15,11 +15,6 @@ public class SQLGeneratorShould {
 	}
 
 	@Test
-	public void generate_sql_for_one_column () {
-		assertThat(sqlGenerator.select(columns("a"), from("c")), is("select a from c"));
-	}
-
-	@Test
 	public void select_all_the_columns () {
 
 		assertThat(sqlGenerator.selectAll(from("a")), is("select * from a"));
