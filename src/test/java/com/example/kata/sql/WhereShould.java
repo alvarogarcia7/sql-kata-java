@@ -11,8 +11,8 @@ public class WhereShould {
 	@Test
 	public void equal_to_strings_none_of_them_a_column () {
 
-		assertThat(constant("a").equalTo(constant("a")).build(), is("where 'a'" +
-				" = 'a'"));
+		assertThat(constant("constant1").equalTo(constant("constant2")).build(), is("where 'constant1'" +
+				" = 'constant2'"));
 	}
 
 	private WhereBuilder constant (final String a) {
