@@ -9,7 +9,7 @@ public class WhereBuilder {
 	private static final String EQUALS = "=";
 	private String constant;
 	private String operation;
-	private WhereBuilder otherClause;
+	private WhereBuilder otherSubQuery;
 	private Optional<String> column = Optional.empty();
 	private Optional<Long> constantInteger  = Optional.empty();
 
@@ -23,9 +23,9 @@ public class WhereBuilder {
 	}
 
 	public String build () {
-		final String firstSubquery = generateFirstSubquery();
-		final String secondSubquery = this.otherClause.buildSubqueryOnly();
-		return WHERE + firstSubquery + WHITESPACE + operation + WHITESPACE + secondSubquery;
+		final String firstSubQuery = generateFirstSubquery();
+		final String secondSubQuery = this.otherSubQuery.buildSubQueryOnly();
+		return WHERE + firstSubQuery + WHITESPACE + operation + WHITESPACE + secondSubQuery;
 	}
 
 	private String generateFirstSubquery () {
@@ -38,7 +38,7 @@ public class WhereBuilder {
 		return firstSubquery;
 	}
 
-	private String buildSubqueryOnly () {
+	private String buildSubQueryOnly () {
 		if (constantInteger.isPresent()) {
 			return String.valueOf(constantInteger.get());
 		}
@@ -51,7 +51,7 @@ public class WhereBuilder {
 
 	public WhereBuilder equalTo (final WhereBuilder where) {
 		this.operation = EQUALS;
-		this.otherClause = where;
+		this.otherSubQuery = where;
 		return this;
 	}
 
