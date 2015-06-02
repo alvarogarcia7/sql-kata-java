@@ -10,6 +10,7 @@ import static org.mockito.Mockito.verify;
 
 public class SQLGeneratorShould {
 
+	private static final String ANY_WHERE_CLAUSE = null;
 	private SQLGenerator sqlGenerator;
 	private Where where;
 
@@ -31,16 +32,8 @@ public class SQLGeneratorShould {
 
 	@Test
 	public void ask_the_where_collaborator_for_its_subquery () {
-		sqlGenerator.selectAll("table", where("a", equal("11")));
-		verify(where).generateQuery(where("a", equal("11")));
-	}
-
-	private String where (final String column, final String clause) {
-		return null;
-	}
-
-	private String equal (final String value) {
-		return null;
+		sqlGenerator.selectAll("table", ANY_WHERE_CLAUSE);
+		verify(where).generateQuery(ANY_WHERE_CLAUSE);
 	}
 
 	private String[] columns (String... columns) {
