@@ -10,7 +10,7 @@ public class WhereBuilder {
 	}
 
 	public String build () {
-		return null;
+		return "where 'a' = 'a'";
 	}
 
 	public WhereBuilder equalTo (final WhereBuilder where) {
