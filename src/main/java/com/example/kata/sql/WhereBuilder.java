@@ -23,15 +23,19 @@ public class WhereBuilder {
 	}
 
 	public String build () {
+		final String firstSubquery = generateFirstSubquery();
+		final String otherClause = this.otherClause.buildSubqueryOnly();
+		return WHERE + firstSubquery + WHITESPACE + operation + WHITESPACE + otherClause;
+	}
+
+	private String generateFirstSubquery () {
 		final String firstSubquery;
 		if (column.isPresent()) {
 			firstSubquery = column.get();
 		} else {
 			firstSubquery = singleQuote(constant);
 		}
-		final String otherClause;
-			otherClause = this.otherClause.buildSubqueryOnly();
-		return WHERE + firstSubquery + WHITESPACE + operation + WHITESPACE + otherClause;
+		return firstSubquery;
 	}
 
 	private String buildSubqueryOnly () {
