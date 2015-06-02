@@ -11,6 +11,7 @@ public class WhereBuilder {
 	private String operation;
 	private WhereBuilder otherClause;
 	private Optional<String> column = Optional.empty();
+	private Optional<Long> constantInteger  = Optional.empty();
 
 	public static WhereBuilder aNew () {
 		return new WhereBuilder();
@@ -28,10 +29,15 @@ public class WhereBuilder {
 		} else {
 			firstSubquery = singleQuote(constant);
 		}
-		return WHERE + firstSubquery + WHITESPACE + operation + WHITESPACE + otherClause.buildSubqueryOnly();
+		final String otherClause;
+			otherClause = this.otherClause.buildSubqueryOnly();
+		return WHERE + firstSubquery + WHITESPACE + operation + WHITESPACE + otherClause;
 	}
 
 	private String buildSubqueryOnly () {
+		if (constantInteger.isPresent()) {
+			return String.valueOf(constantInteger.get());
+		}
 		return singleQuote(constant);
 	}
 
@@ -51,6 +57,7 @@ public class WhereBuilder {
 	}
 
 	public WhereBuilder constant (final long value) {
+		this.constantInteger = Optional.of(value);
 		return this;
 	}
 }
