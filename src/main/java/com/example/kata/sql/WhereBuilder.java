@@ -15,11 +15,15 @@ public class WhereBuilder {
 	}
 
 	public String build () {
-		return "where "+"'"+constant+"' "+operation+" " + otherClause.smallBuild();
+		return "where "+singleQuoute(constant)+" "+operation+" " + otherClause.smallBuild();
 	}
 
 	private String smallBuild () {
-		return "'" + constant + "'";
+		return singleQuoute(constant);
+	}
+
+	private String singleQuoute (final String constant1) {
+		return "'" + constant1 + "'";
 	}
 
 	public WhereBuilder equalTo (final WhereBuilder where) {
