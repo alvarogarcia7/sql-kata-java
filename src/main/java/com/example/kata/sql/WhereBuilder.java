@@ -3,7 +3,7 @@ package com.example.kata.sql;
 public class WhereBuilder {
 	private static final String WHITESPACE = " ";
 	private static final String WHERE = "where ";
-	private static final String SINGLE_QUOUTE = "'";
+	private static final String SINGLE_QUOTE = "'";
 	private static final String EQUALS = "=";
 	private String constant;
 	private String operation;
@@ -19,15 +19,15 @@ public class WhereBuilder {
 	}
 
 	public String build () {
-		return WHERE +singleQuoute(constant)+ WHITESPACE +operation+ WHITESPACE + otherClause.buildSubqueryOnly();
+		return WHERE + singleQuote(constant)+ WHITESPACE +operation+ WHITESPACE + otherClause.buildSubqueryOnly();
 	}
 
 	private String buildSubqueryOnly () {
-		return singleQuoute(constant);
+		return singleQuote(constant);
 	}
 
-	private String singleQuoute (final String constant1) {
-		return SINGLE_QUOUTE + constant1 + SINGLE_QUOUTE;
+	private String singleQuote (final String constant1) {
+		return SINGLE_QUOTE + constant1 + SINGLE_QUOTE;
 	}
 
 	public WhereBuilder equalTo (final WhereBuilder where) {
