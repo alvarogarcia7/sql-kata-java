@@ -12,6 +12,7 @@ public class WhereBuilder {
 	private WhereBuilder otherSubQuery;
 	private Optional<String> column = Optional.empty();
 	private Optional<Long> constantInteger  = Optional.empty();
+	private Optional<Boolean> booleanValue = Optional.empty();
 
 	public static WhereBuilder aNew () {
 		return new WhereBuilder();
@@ -45,6 +46,8 @@ public class WhereBuilder {
 	private String buildSubQueryOnly () {
 		if (constantInteger.isPresent()) {
 			return String.valueOf(constantInteger.get());
+		} else if (booleanValue.isPresent()) {
+			return booleanValue.get().toString();
 		}
 		return singleQuote(constant);
 	}
@@ -54,7 +57,7 @@ public class WhereBuilder {
 	}
 
 	public WhereBuilder equalTo (final WhereBuilder where) {
-		this.operation = EQUALS;
+		this.operation = where.booleanValue.isPresent() ? "is" : EQUALS;
 		this.otherSubQuery = where;
 		return this;
 	}
@@ -70,6 +73,7 @@ public class WhereBuilder {
 	}
 
 	public WhereBuilder constant (final boolean value) {
+		this.booleanValue = Optional.of(value);
 		return this;
 	}
 }
