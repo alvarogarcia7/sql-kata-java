@@ -22,10 +22,13 @@ public class WhereBuilder {
 	}
 
 	public String build () {
+		final String firstSubquery;
 		if (column.isPresent()) {
-			return WHERE + column.get() + WHITESPACE + operation + WHITESPACE + otherClause.buildSubqueryOnly();
+			firstSubquery = column.get();
+		} else {
+			firstSubquery = singleQuote(constant);
 		}
-		return WHERE + singleQuote(constant) + WHITESPACE + operation + WHITESPACE + otherClause.buildSubqueryOnly();
+		return WHERE + firstSubquery + WHITESPACE + operation + WHITESPACE + otherClause.buildSubqueryOnly();
 	}
 
 	private String buildSubqueryOnly () {
