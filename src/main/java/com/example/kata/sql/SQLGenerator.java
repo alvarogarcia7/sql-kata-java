@@ -14,9 +14,6 @@ public class SQLGenerator {
 	public SQLGenerator (final Where where) {
 		this.where = where;
 	}
-	public SQLGenerator(){
-		this.where = new Where();
-	}
 
 	public String select (final String[] columns, final String table) {
 		return SELECT + getColumns(columns) + FROM + table;

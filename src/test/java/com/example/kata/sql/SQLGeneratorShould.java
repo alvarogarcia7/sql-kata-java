@@ -11,10 +11,12 @@ import static org.mockito.Mockito.verify;
 public class SQLGeneratorShould {
 
 	private SQLGenerator sqlGenerator;
+	private Where where;
 
 	@Before
 	public void setUp () {
-		sqlGenerator = new SQLGenerator();
+		where = mock(Where.class);
+		sqlGenerator = new SQLGenerator(where);
 	}
 
 	@Test
@@ -29,8 +31,6 @@ public class SQLGeneratorShould {
 
 	@Test
 	public void ask_the_where_collaborator_for_its_subquery () {
-		final Where where = mock(Where.class);
-		sqlGenerator = new SQLGenerator(where);
 		sqlGenerator.selectAll("table", where("a", equal("11")));
 		verify(where).generateQuery(where("a", equal("11")));
 	}
