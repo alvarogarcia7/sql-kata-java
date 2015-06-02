@@ -25,12 +25,6 @@ public class SQLGeneratorShould {
 		assertThat(sqlGenerator.selectAll(from("a")), is("select * from a"));
 	}
 
-	@Test
-	public void select_from_another_table () {
-
-		assertThat(sqlGenerator.select(columns("a", "d"), from("d")), is("select a, d from d"));
-	}
-
 	private String[] columns (String... columns) {
 		return columns;
 	}
