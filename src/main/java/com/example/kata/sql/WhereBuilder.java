@@ -1,5 +1,7 @@
 package com.example.kata.sql;
 
+import java.util.Optional;
+
 public class WhereBuilder {
 	private static final String WHITESPACE = " ";
 	private static final String WHERE = "where ";
@@ -8,6 +10,7 @@ public class WhereBuilder {
 	private String constant;
 	private String operation;
 	private WhereBuilder otherClause;
+	private Optional<String> column = Optional.empty();
 
 	public static WhereBuilder aNew () {
 		return new WhereBuilder();
@@ -19,7 +22,10 @@ public class WhereBuilder {
 	}
 
 	public String build () {
-		return WHERE + singleQuote(constant)+ WHITESPACE +operation+ WHITESPACE + otherClause.buildSubqueryOnly();
+		if (column.isPresent()) {
+			return WHERE + column.get() + WHITESPACE + operation + WHITESPACE + otherClause.buildSubqueryOnly();
+		}
+		return WHERE + singleQuote(constant) + WHITESPACE + operation + WHITESPACE + otherClause.buildSubqueryOnly();
 	}
 
 	private String buildSubqueryOnly () {
@@ -37,6 +43,7 @@ public class WhereBuilder {
 	}
 
 	public WhereBuilder column (final String column) {
+		this.column = Optional.of(column);
 		return this;
 	}
 }
