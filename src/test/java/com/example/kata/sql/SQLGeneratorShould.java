@@ -1,0 +1,35 @@
+package com.example.kata.sql;
+
+import org.hamcrest.CoreMatchers;
+import org.junit.Test;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+
+public class SQLGeneratorShould {
+
+	private SQLGenerator sqlGenerator = new SQLGenerator();
+
+	@Test
+	public void generate_sql_for_two_columns () {
+		assertThat(sqlGenerator.sql(new String[]{"a", "d"}, "c"), CoreMatchers.is("select a, d from c"));
+	}
+
+	@Test
+	public void generate_sql_for_one_column () {
+		assertThat(sqlGenerator.sql(new String[]{"a"}, "c"), CoreMatchers.is("select a from c"));
+	}
+
+	@Test
+	public void select_all_the_columns () {
+
+		assertThat(sqlGenerator.sql("a"), is("select * from a"));
+	}
+
+	@Test
+	public void select_from_another_table () {
+
+		assertThat(sqlGenerator.sql(new String[]{"a","d"}, "d"), is("select a, d from d"));
+	}
+
+}
