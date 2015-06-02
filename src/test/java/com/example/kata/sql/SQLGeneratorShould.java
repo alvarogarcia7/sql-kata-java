@@ -11,12 +11,12 @@ public class SQLGeneratorShould {
 
 	@Test
 	public void generate_sql_for_two_columns () {
-		assertThat(sqlGenerator.sql(new String[]{"a", "d"}, "c"), is("select a, d from c"));
+		assertThat(sqlGenerator.sql(columns("a", "d"), "c"), is("select a, d from c"));
 	}
 
 	@Test
 	public void generate_sql_for_one_column () {
-		assertThat(sqlGenerator.sql(new String[]{"a"}, "c"), is("select a from c"));
+		assertThat(sqlGenerator.sql(columns("a"), "c"), is("select a from c"));
 	}
 
 	@Test
@@ -28,7 +28,11 @@ public class SQLGeneratorShould {
 	@Test
 	public void select_from_another_table () {
 
-		assertThat(sqlGenerator.sql(new String[]{"a","d"}, "d"), is("select a, d from d"));
+		assertThat(sqlGenerator.sql(columns("a", "d"), "d"), is("select a, d from d"));
+	}
+
+	private String[] columns (String... columns) {
+		return columns;
 	}
 
 }
