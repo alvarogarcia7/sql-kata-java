@@ -25,7 +25,11 @@ public class WhereBuilder {
 	public String build () {
 		final String firstSubQuery = generateFirstSubquery();
 		final String secondSubQuery = this.otherSubQuery.buildSubQueryOnly();
-		return WHERE + firstSubQuery + WHITESPACE + operation + WHITESPACE + secondSubQuery;
+		return WHERE + firstSubQuery + pad(operation) + secondSubQuery;
+	}
+
+	private String pad (final String operation1) {
+		return WHITESPACE + operation1 + WHITESPACE;
 	}
 
 	private String generateFirstSubquery () {
