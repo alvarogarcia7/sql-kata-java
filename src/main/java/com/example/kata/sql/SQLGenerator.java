@@ -12,7 +12,7 @@ public class SQLGenerator {
 		if(columns.length == 2) {
 			return SELECT + getColumns(columns) + FROM_CLAUSE + table;
 		}
-		return SELECT +"a"+ FROM_CLAUSE + table;
+		return SELECT +getColumns(columns)+ FROM_CLAUSE + table;
 	}
 
 	private String getColumns (final String[] columns) {
