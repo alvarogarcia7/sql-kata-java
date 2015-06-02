@@ -11,7 +11,7 @@ public class SQLGenerator {
 		return SELECT +"a"+ FROM_CLAUSE + table;
 	}
 
-	public String sql (final String table) {
+	public String selectAll (final String table) {
 		return SELECT+"* from " + table;
 	}
 }

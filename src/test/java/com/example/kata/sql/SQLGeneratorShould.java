@@ -22,7 +22,7 @@ public class SQLGeneratorShould {
 	@Test
 	public void select_all_the_columns () {
 
-		assertThat(sqlGenerator.sql(from("a")), is("select * from a"));
+		assertThat(sqlGenerator.selectAll(from("a")), is("select * from a"));
 	}
 
 	@Test
