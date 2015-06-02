@@ -4,6 +4,7 @@ public class WhereBuilder {
 	public static final String WHITESPACE = " ";
 	public static final String WHERE = "where ";
 	public static final String SINGLE_QUOUTE = "'";
+	public static final String EQUALS = "=";
 	private String constant;
 	private String operation;
 	private WhereBuilder otherClause;
@@ -30,7 +31,7 @@ public class WhereBuilder {
 	}
 
 	public WhereBuilder equalTo (final WhereBuilder where) {
-		this.operation = "=";
+		this.operation = EQUALS;
 		this.otherClause = where;
 		return this;
 	}
