@@ -15,6 +15,17 @@ public class WhereShould {
 				" = 'constant2'"));
 	}
 
+	@Test
+	public void equal_a_string_to_a_column() {
+
+		assertThat(column("column").equalTo(constant("value")).build(), is("where column" +
+				" = 'value'"));
+	}
+
+	private WhereBuilder column (final String column) {
+		return aNew().column(column);
+	}
+
 	private WhereBuilder constant (final String a) {
 		return aNew().constant(a);
 	}

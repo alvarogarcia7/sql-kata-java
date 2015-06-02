@@ -35,4 +35,8 @@ public class WhereBuilder {
 		this.otherClause = where;
 		return this;
 	}
+
+	public WhereBuilder column (final String column) {
+		return this;
+	}
 }
