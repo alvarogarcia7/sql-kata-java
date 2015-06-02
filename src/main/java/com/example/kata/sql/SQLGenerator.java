@@ -2,8 +2,7 @@ package com.example.kata.sql;
 
 import com.sun.deploy.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 public class SQLGenerator {
 	private final String SELECT = "select ";
@@ -17,11 +16,7 @@ public class SQLGenerator {
 	}
 
 	private String getColumns (final String[] columns) {
-		final List<String> colum = new ArrayList<>();
-		for (String s : columns) {
-			colum.add(s);
-		}
-		return StringUtils.join(colum, ", ");
+		return StringUtils.join(Arrays.asList(columns), ", ");
 	}
 
 	public String selectAll (final String table) {
