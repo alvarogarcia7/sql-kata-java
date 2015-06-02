@@ -2,6 +2,7 @@ package com.example.kata.sql;
 
 public class WhereBuilder {
 	public static final String WHITESPACE = " ";
+	public static final String WHERE = "where ";
 	private String constant;
 	private String operation;
 	private WhereBuilder otherClause;
@@ -16,7 +17,7 @@ public class WhereBuilder {
 	}
 
 	public String build () {
-		return "where "+singleQuoute(constant)+ WHITESPACE +operation+ WHITESPACE + otherClause.buildSubqueryOnly();
+		return WHERE +singleQuoute(constant)+ WHITESPACE +operation+ WHITESPACE + otherClause.buildSubqueryOnly();
 	}
 
 	private String buildSubqueryOnly () {
